@@ -1,0 +1,25 @@
+{
+  "name": "nft-landing-page",
+  "version": "1.0.0",
+  "description": "Mockup landing page for NFT company.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch styles/main.scss styles/main.css --load-path=./styles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6alactico/Nft-Landing-Page.git"
+  },
+  "keywords": [
+    "nft",
+    "landing",
+    "page"
+  ],
+  "author": "6alactico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/6alactico/Nft-Landing-Page/issues"
+  },
+  "homepage": "https://github.com/6alactico/Nft-Landing-Page#readme"
+}

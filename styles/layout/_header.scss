@@ -1,0 +1,76 @@
+@use 'base/colors' as *;
+@use 'base/spacing' as *;
+@use 'abstracts/mixins' as *;
+
+header {
+    width: inherit;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp($sp-150, 1.13vw + 0.49rem, $sp-300) clamp($sp-200, 4.13vw + 0.032rem, 3.75rem);
+  background-color: $neutral-500;
+  box-shadow: 1px 1px 8px $neutral-500;
+}
+
+.main-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 70%;
+    background-color: $neutral-500;
+    z-index: 1;
+
+    ul {
+        gap: $sp-300;
+        @include font(500);
+    }
+
+    &.active {
+       display: flex;
+    }
+}
+
+.menu-btn {
+    padding: $sp-100 $sp-150;
+
+    &.close {
+    align-self: flex-end;
+    width: fit-content;
+    }
+}
+
+@include respond(up, tablet) {
+  .main-nav {
+    display: flex;
+    @include text-style(body);
+    background-color: transparent;
+    position: static;
+    justify-content: flex-end;
+
+    ul {
+      display: flex;  
+      flex-direction: row;
+      align-items: center;
+
+      li {
+        
+        a:hover {
+          color: $primary-500;
+        }
+
+        &:nth-child(5) {
+          background: linear-gradient(to right, $primary-500, $secondary-500);
+          margin-left: 2rem;
+
+          a:hover {
+            color: $neutral-50;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-btn {
+    display: none;
+  }
+}

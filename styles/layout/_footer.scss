@@ -1,0 +1,116 @@
+@use 'base/colors' as *;
+@use 'base/spacing' as *;
+@use 'abstracts/mixins' as *;
+@use 'base/typography' as *;
+
+footer {
+    padding: $sp-600 clamp($sp-200, 4.13vw + 0.51px, 3.75rem) $sp-0;
+    background-color: $neutral-500;
+    color: $neutral-50;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+
+    section {
+        padding: $sp-300;
+    }
+
+    ul {
+        gap: $sp-100;
+    }
+
+    section li {
+        @include text-style(body);
+
+        & a:hover {
+            color: $primary-500;
+        }
+    }
+    
+}
+
+.newsletter {
+    padding-block: $sp-600;
+    align-items: center;
+    text-align: center;
+
+    p {
+        padding-block-end: $sp-400;
+    }
+
+    input[type=email] {
+        padding: $sp-100 $sp-200;
+        @include text-style(body);
+        border: transparent;
+        outline: 1px solid transparent;
+        cursor: pointer;
+
+        &:focus {
+            outline-color: $secondary-200;
+        }
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .email-input {
+        border-radius: 12px;
+        overflow: hidden;
+        width: fit-content;
+        outline: 1px solid transparent;
+    }
+
+    .subscribe-btn {
+        color: $neutral-50;
+        padding: $sp-100 $sp-200;
+        height: 44px;
+        background-image: linear-gradient(to right, $primary-500, $secondary-500);
+    }
+}
+
+.footer-bottom {
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+
+    .legalities {
+        gap: $sp-100;
+    }
+    
+    .legalities p {
+        @include text-style(footnote);
+
+        &:first-child {
+            gap: $sp-200;
+        }
+    }
+    
+    .social-links li {
+        padding: $sp-150;
+    }
+}
+
+@include respond(up, tablet) {
+    footer {
+        div:first-child {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+    .footer-links {
+        justify-content: flex-start;
+        gap: $sp-600;
+    }
+}

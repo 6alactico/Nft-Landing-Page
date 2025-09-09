@@ -1,3 +1,536 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+  overflow-y: auto;
+  flex: 1;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.auto-show {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1), transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.auto-show.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@font-face {
+  font-family: "PP Neue Montreal";
+  src: url("/fonts/PPNeueMontreal-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Neue Montreal";
+  src: url("/fonts/PPNeueMontreal-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Neue Montreal";
+  src: url("/fonts/PPNeueMontreal-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow: auto;
+  height: 100%;
+  font-family: "PP Neue Montreal", sans-serif;
+}
+
+body {
+  max-width: 90rem;
+  margin: 0 auto;
+  background: hsl(0, 0%, 5%);
+  color: hsl(0, 0%, 95%);
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: hsl(0, 0%, 95%);
+  white-space: nowrap;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1 {
+  font-size: clamp(2em, 1.8rem + 1.2vw, 2.5em);
+  line-height: 1.3;
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 1.3rem + 1vw, 2.125rem);
+  line-height: 1.3;
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 500;
+}
+
+h3 {
+  padding-block-end: 0.5rem;
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  line-height: 1.35;
+}
+
+p {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  line-height: 1.5;
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 400;
+}
+
+header {
+  width: inherit;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.75rem, 1.13vw + 0.49rem, 1.5rem) clamp(1rem, 4.13vw + 0.032rem, 3.75rem);
+  background-color: hsl(0, 0%, 5%);
+  box-shadow: 1px 1px 8px hsl(0, 0%, 5%);
+}
+
+.main-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 70%;
+  background-color: hsl(0, 0%, 5%);
+  z-index: 1;
+}
+.main-nav ul {
+  gap: 1.5rem;
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 500;
+}
+.main-nav.active {
+  display: flex;
+}
+
+.menu-btn {
+  padding: 0.5rem 0.75rem;
+}
+.menu-btn.close {
+  align-self: flex-end;
+  width: fit-content;
+}
+
+@media (min-width: 48rem) {
+  .main-nav {
+    display: flex;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    line-height: 1.5;
+    background-color: transparent;
+    position: static;
+    justify-content: flex-end;
+  }
+  .main-nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .main-nav ul li a:hover {
+    color: hsl(359, 93%, 71%);
+  }
+  .main-nav ul li:nth-child(5) {
+    background: linear-gradient(to right, hsl(359, 93%, 71%), hsl(24, 100%, 63%));
+    margin-left: 2rem;
+  }
+  .main-nav ul li:nth-child(5) a:hover {
+    color: hsl(0, 0%, 95%);
+  }
+  .menu-btn {
+    display: none;
+  }
+}
+footer {
+  padding: 3rem clamp(1rem, 4.13vw + 0.51px, 3.75rem) 0;
+  background-color: hsl(0, 0%, 5%);
+  color: hsl(0, 0%, 95%);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  align-items: center;
+}
+.footer-links section {
+  padding: 1.5rem;
+}
+.footer-links ul {
+  gap: 0.5rem;
+}
+.footer-links section li {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  line-height: 1.5;
+}
+.footer-links section li a:hover {
+  color: hsl(359, 93%, 71%);
+}
+
+.newsletter {
+  padding-block: 3rem;
+  align-items: center;
+  text-align: center;
+}
+.newsletter p {
+  padding-block-end: 2rem;
+}
+.newsletter input[type=email] {
+  padding: 0.5rem 1rem;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  line-height: 1.5;
+  border: transparent;
+  outline: 1px solid transparent;
+  cursor: pointer;
+}
+.newsletter input[type=email]:focus {
+  outline-color: #FFC39B;
+}
+.newsletter .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.newsletter .email-input {
+  border-radius: 12px;
+  overflow: hidden;
+  width: fit-content;
+  outline: 1px solid transparent;
+}
+.newsletter .subscribe-btn {
+  color: hsl(0, 0%, 95%);
+  padding: 0.5rem 1rem;
+  height: 44px;
+  background-image: linear-gradient(to right, hsl(359, 93%, 71%), hsl(24, 100%, 63%));
+}
+
+.footer-bottom {
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+}
+.footer-bottom .legalities {
+  gap: 0.5rem;
+}
+.footer-bottom .legalities p {
+  font-size: clamp(0.688rem, 0.65rem + 0.2vw, 0.75rem);
+  line-height: 1.3;
+}
+.footer-bottom .legalities p:first-child {
+  gap: 1rem;
+}
+.footer-bottom .social-links li {
+  padding: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+  footer div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer-links {
+    justify-content: flex-start;
+    gap: 3rem;
+  }
+}
+main {
+  padding: 3rem 1rem;
+  justify-items: center;
+}
+
+.logo {
+  height: auto;
+  width: clamp(6rem, 5.736rem + 1.127vw, 6.75rem);
+}
+
+.hero {
+  gap: 2rem;
+  padding-block: 4rem;
+}
+.hero__left {
+  align-items: center;
+  text-align: center;
+}
+.hero__right {
+  display: none;
+}
+.hero__heading {
+  gap: 1.5rem;
+  padding-block: clamp(1.5rem, 18.366px + 1.502vw, 2.5rem);
+}
+.hero__heading p {
+  font-size: clamp(1.75rem, 1.3rem + 1vw, 2.125rem);
+  line-height: 1.3;
+}
+.hero__tags {
+  gap: 1.5rem;
+  padding-block-end: clamp(2rem, 20.732px + 3.005vw, 4rem);
+  white-space: nowrap;
+}
+.hero__tags span {
+  gap: 0.25rem;
+  border-radius: 24px;
+  background-color: hsla(0, 0%, 59%, 0.05);
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.813rem, 0.75rem + 0.25vw, 0.875rem);
+  line-height: 1.4;
+  align-items: center;
+}
+@media (min-width: 48rem) {
+  .hero {
+    flex-direction: row;
+    justify-content: center;
+    padding-block: 3rem;
+  }
+  .hero__left {
+    width: 30%;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .hero__right {
+    width: 50%;
+    display: flex;
+    align-self: center;
+  }
+}
+
+.roadmap {
+  padding-block: 4rem;
+  gap: 2rem;
+  align-items: center;
+}
+.roadmap h3 {
+  font-size: clamp(1.125rem, 1rem + 0.8vw, 1.25rem);
+  line-height: 1.4;
+}
+
+.timeline {
+  position: relative;
+  align-items: center;
+  width: 100%;
+}
+.timeline::after {
+  content: "";
+  position: absolute;
+  inset: 0 50%;
+  transform: translateX(-50%);
+  width: clamp(0.25rem, 0.206rem + 0.188vw, 0.375rem);
+  background-color: hsl(0, 0%, 95%);
+}
+.timeline li {
+  position: relative;
+  width: 50%;
+  margin: 2rem 0;
+}
+.timeline li::after {
+  content: "";
+  position: absolute;
+  width: clamp(0.938rem, 0.82rem + 0.47vw, 1.25rem);
+  height: clamp(0.938rem, 0.82rem + 0.47vw, 1.25rem);
+  background-color: hsl(24, 100%, 63%);
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 1;
+}
+.timeline li.left-item {
+  left: 0;
+  padding-inline-end: clamp(1rem, 0.47rem + 2.25vw, 2.5rem);
+}
+.timeline li.right-item {
+  left: 50%;
+  padding-inline-start: clamp(1rem, 0.47rem + 2.25vw, 2.5rem);
+}
+.timeline li.right-item::after {
+  left: 0;
+}
+@media (min-width: 48rem) {
+  .timeline li {
+    height: 120px;
+  }
+}
+
+.primary-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 18px;
+  background-image: linear-gradient(to right, hsl(359, 93%, 71%), hsl(24, 100%, 63%));
+  color: hsl(0, 0%, 95%);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.primary-btn.browse {
+  align-self: center;
+}
+.primary-btn:hover {
+  background-image: linear-gradient(to right, hsl(359, 55%, 52%), hsl(24, 100%, 55%));
+  transform: scale(1.03);
+}
+
+.subscribe-btn:hover {
+  background-image: linear-gradient(to right, hsl(359, 55%, 52%), hsl(24, 100%, 55%));
+}
+
+.featured {
+  padding-block: 4rem;
+  gap: 2rem;
+  width: clamp(23.438rem, 3.521rem + 84.977vw, 70rem);
+}
+.featured h2 {
+  text-align: center;
+}
+.featured .cards {
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-block: 1.5rem;
+}
+.featured .card {
+  width: clamp(200px, 11.4rem + 4.7vw, 250px);
+  height: clamp(300px, 17.65rem + 4.7vw, 350px);
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid hsl(0, 0%, 95%);
+  cursor: pointer;
+  transition: transform 0.3s;
+  box-shadow: 1px 1px 8px hsl(0, 0%, 5%);
+}
+.featured .card__price {
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.688rem, 0.65rem + 0.2vw, 0.75rem);
+  line-height: 1.3;
+  font-weight: bold;
+  background-color: hsla(0, 0%, 5%, 0.5);
+  border-radius: 24px;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.featured .card__favorite-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.75rem 1rem;
+}
+.featured .card__text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.75rem;
+}
+.featured .card__text h3 {
+  padding-bottom: 0;
+}
+.featured .card .fade-bottom-mask {
+  -webkit-mask-image: linear-gradient(to bottom, hsl(0, 0%, 5%) 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, hsl(0, 0%, 5%) 50%, transparent 100%);
+}
+.featured .card:hover {
+  transform: scale(1.03);
+}
+
+@media (min-width: 48rem) {
+  .cards {
+    padding-inline: 1rem;
+  }
+}
+.background-shapes {
+  pointer-events: none;
+  z-index: -1;
+  height: inherit;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transform: translateZ(0);
+  will-change: filter;
+}
+.background-shapes::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/media/45-degree-fabric-dark.avif");
+  opacity: 0.08;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+.background-shapes li {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(125px);
+  background: radial-gradient(circle, rgba(249.8235, 112.2765, 114.56895, 0.5), rgba(249.8235, 112.2765, 114.56895, 0));
+}
+.background-shapes li:nth-child(1) {
+  right: 0;
+  width: 100px;
+  height: 100px;
+}
+.background-shapes li:nth-child(2) {
+  top: 100%;
+  width: 135px;
+  height: 135px;
+}
+.background-shapes li:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  bottom: 50%;
+  right: 0;
+}
+.background-shapes li:nth-child(4) {
+  width: 80px;
+  height: 100px;
+  top: 25%;
+  left: 0;
+}
 
 /*# sourceMappingURL=main.css.map */

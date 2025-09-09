@@ -1,0 +1,56 @@
+@use 'base/colors' as *;
+
+.background-shapes {
+    pointer-events: none;
+    z-index: -1;
+    height: inherit;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    transform: translateZ(0);
+    will-change: filter;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image: url('/media/45-degree-fabric-dark.avif');
+        opacity: 0.08;
+        z-index: 1;
+        mix-blend-mode: overlay;
+    }
+
+    li {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(125px);
+        background: radial-gradient(circle, rgba($primary-500, 0.5), rgba($primary-500, 0));
+    }
+
+    li:nth-child(1) {
+        right: 0;
+        width: 100px;
+        height: 100px;
+    }
+
+    li:nth-child(2) {
+        top: 100%;
+        width: 135px;
+        height: 135px;
+    }
+
+    li:nth-child(3) {
+        width: 150px;
+        height: 150px;
+        bottom: 50%;
+        right: 0;
+    }
+
+    li:nth-child(4) {
+        width: 80px;
+        height: 100px;
+        top: 25%;
+        left: 0;
+    }
+}

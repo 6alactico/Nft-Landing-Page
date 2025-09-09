@@ -1,0 +1,94 @@
+@use 'colors' as *;
+@use 'spacing' as *;
+@use 'abstracts/mixins' as *;
+@use 'typography' as *;
+@use 'abstracts/animations' as *;
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Book.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow: auto;
+  height: 100%;
+  font-family: 'PP Neue Montreal', sans-serif;
+
+}
+
+body {
+  max-width: 90rem;
+  margin: 0 auto;
+  background: $neutral-500;
+  color: $neutral-50;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: $neutral-50;
+  white-space: nowrap;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  @include text-style(body);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1 {
+  @include text-style(heading-1);
+  @include font(700);
+  word-wrap: break-word;
+}
+
+h2 {
+  @include text-style(heading-2);
+  @include font(500);
+}
+
+h3 {
+  padding-block-end: $sp-100;
+  @include text-style(heading-3);
+}
+
+p {
+  @include text-style(body);
+  @include font(400);
+}

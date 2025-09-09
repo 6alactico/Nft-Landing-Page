@@ -1,0 +1,36 @@
+@use 'base/spacing' as *;
+
+$typography: (
+  heading-1: (
+    size: clamp(2em, calc(1.8rem + 1.2vw), 2.5em),
+    line-height: 1.3
+  ),
+  heading-2: (
+    size: clamp(1.75rem, calc(1.3rem + 1vw), 2.125rem),
+    line-height: 1.3
+  ),
+  heading-3: (
+    size: clamp(1.25rem, calc(1rem + 0.8vw), 1.75rem),
+    line-height: 1.35
+  ),
+  subheading: (
+    size: clamp(1.125rem, calc(1rem + 0.8vw), 1.25rem),
+    line-height: 1.4
+  ),
+  body: (
+    size: clamp(1rem, calc(0.9rem + 0.5vw), 1.125rem),
+    line-height: 1.5
+  ),
+  callout: (
+    size: clamp(0.938rem, calc(0.85rem + 0.3vw), 1rem),
+    line-height: 1.5
+  ),
+  caption: (
+    size: clamp(0.813rem, calc(0.75rem + 0.25vw), 0.875rem),
+    line-height: 1.4
+  ),
+  footnote: (
+    size: clamp(0.688rem, calc(0.65rem + 0.2vw), 0.75rem),
+    line-height: 1.3
+  )
+);

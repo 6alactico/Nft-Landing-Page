@@ -1,0 +1,45 @@
+@use 'base/typography' as *;
+
+// Typography style
+@mixin text-style($name) {
+  $style: map-get($typography, $name);
+
+  @if $style == null {
+    @error "Text style `#{$name}` does not exist in $typography map.";
+  }
+
+  font-size: map-get($style, size);
+  line-height: map-get($style, line-height);
+}
+
+@mixin font($weight: 400) {
+    font-family: 'PP Neue Montreal', sans-serif;
+    font-weight: $weight;
+}
+
+// Screen breakpoints
+$breakpoints: (
+  desktop: 64rem, // 1024px
+  tablet: 48rem, // 768px
+  mobile: 23.438rem // 375px
+);
+
+@mixin respond($direction, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+
+    @if $value {
+        @if $direction == up {
+            @media (min-width: $value) {
+                @content;
+            }
+        } @else if $direction == down {
+            @media (max-width: $value) {
+                @content;
+            }
+        } @else {
+            @warn "Direction must be 'up' or 'down'.";
+        } 
+    }  @else {
+        @warn "Breakpoint '#{$breakpoint}' not found.";
+    }
+}
