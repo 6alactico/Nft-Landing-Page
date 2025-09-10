@@ -3,40 +3,51 @@
 @use 'abstracts/mixins' as *;
 
 header {
-    width: inherit;
-  position: relative;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
   align-items: center;
   justify-content: space-between;
+  z-index: 100;
   padding: clamp($sp-150, 1.13vw + 0.49rem, $sp-300) clamp($sp-200, 4.13vw + 0.032rem, 3.75rem);
   background-color: $neutral-500;
-  box-shadow: 1px 1px 8px $neutral-500;
 }
 
 .main-nav {
-    display: none;
-    position: fixed;
-    inset: 0;
-    width: 70%;
-    background-color: $neutral-500;
-    z-index: 1;
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 70%;
+  background-color: $neutral-500;
+  z-index: 1;
+  padding: $sp-100 $sp-200;
 
-    ul {
-        gap: $sp-300;
-        @include font(500);
-    }
+  ul {
+    display: flex;  
+    flex-direction: column;
+    gap: $sp-200;
+    @include font(500);
+  }
 
-    &.active {
-       display: flex;
-    }
+  &.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include respond(down, tablet) {
+    height: 100vh;
+  }
 }
 
 .menu-btn {
-    padding: $sp-100 $sp-150;
+  padding: $sp-100 $sp-150;
 
-    &.close {
+  &.close {
     align-self: flex-end;
     width: fit-content;
-    }
+  }
 }
 
 @include respond(up, tablet) {
@@ -46,6 +57,7 @@ header {
     background-color: transparent;
     position: static;
     justify-content: flex-end;
+    z-index: 999;
 
     ul {
       display: flex;  

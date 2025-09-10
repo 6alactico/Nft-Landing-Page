@@ -5,7 +5,7 @@
 
 main {
     padding: $sp-600 $sp-200;
-    justify-items: center;
+    overflow-y: auto;
 }
 
 .logo {
@@ -16,6 +16,7 @@ main {
 .hero {
     gap: $sp-400;
     padding-block: $sp-800;
+    overflow-x: hidden;
 
     &__left {
         align-items: center;

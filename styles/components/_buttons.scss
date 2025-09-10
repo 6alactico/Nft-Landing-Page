@@ -17,6 +17,10 @@
         background-image: linear-gradient(to right, $primary-600, $secondary-600);
         transform: scale(1.03);
     }
+
+    &.claim {
+        margin-block-start: $sp-400;
+    }
 }
 
 .subscribe-btn:hover {

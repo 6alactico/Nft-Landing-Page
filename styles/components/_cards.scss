@@ -3,9 +3,9 @@
 @use 'abstracts/mixins' as *;
 
 .featured {
+    display: flex;
     padding-block: $sp-800;
     gap: $sp-400;
-    width: clamp(23.438rem, calc(3.521rem + 84.977vw), 70rem);
 
     h2 {
         text-align: center;
@@ -29,9 +29,9 @@
         box-shadow: 1px 1px 8px $neutral-500;
         
         &__price {
-            padding: $sp-100 $sp-200;
+            padding: $sp-50 $sp-100;
             @include text-style(footnote);
-            font-weight: bold;
+            @include font(600);
             background-color: hsla(0, 0%, 5%, 50%);
             border-radius: 24px;
             position: absolute;

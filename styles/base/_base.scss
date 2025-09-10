@@ -29,12 +29,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: 1px solid red;
 }
 
 html, body {
   overflow: auto;
   height: 100%;
   font-family: 'PP Neue Montreal', sans-serif;
+  overflow-x: hidden;
 }
 
 body {
